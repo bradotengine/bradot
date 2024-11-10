@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-bradot-project">
+    <comment>Bradot Engine project</comment>
+    <sub-class-of type="text/plain"/>
+    <icon name="x-bradot-project"/>
+    <glob pattern="project.bradot"/>
+  </mime-type>
+
+  <mime-type type="application/x-bradot-resource">
+    <comment>Bradot Engine resource</comment>
+    <icon name="x-bradot-resource"/>
+    <glob pattern="*.res"/>
+    <glob pattern="*.tres"/>
+  </mime-type>
+
+  <mime-type type="application/x-bradot-scene">
+    <comment>Bradot Engine scene</comment>
+    <icon name="x-bradot-scene"/>
+    <glob pattern="*.scn"/>
+    <glob pattern="*.tscn"/>
+    <glob pattern="*.escn"/>
+  </mime-type>
+
+  <mime-type type="application/x-bradot-shader">
+    <comment>Bradot Engine shader</comment>
+    <sub-class-of type="text/plain"/>
+    <icon name="x-bradot-shader"/>
+    <glob pattern="*.brshader"/>
+  </mime-type>
+
+  <mime-type type="application/x-brscript">
+    <comment>BRScript script</comment>
+    <sub-class-of type="text/plain"/>
+    <icon name="x-brscript"/>
+    <glob pattern="*.br"/>
+  </mime-type>
+</mime-info>

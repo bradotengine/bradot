@@ -1,0 +1,6 @@
+BRTEST_OK
+>> WARNING
+>> Line: 4
+>> SHADOWED_VARIABLE
+>> The local function parameter "shadow" is shadowing an already-declared variable at line 1 in the current class.
+shadow

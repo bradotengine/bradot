@@ -1,0 +1,6 @@
+BRTEST_OK
+>> WARNING
+>> Line: 8
+>> UNREACHABLE_PATTERN
+>> Unreachable pattern (pattern after wildcard or bind).
+default

@@ -1,0 +1,5 @@
+const preloaded: BRScript = preload("brscript_to_preload.notest.br")
+
+func test():
+	var preloaded_instance: preloaded = preloaded.new()
+	print(preloaded_instance.something())

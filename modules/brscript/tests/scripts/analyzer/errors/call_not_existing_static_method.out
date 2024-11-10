@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Static function "not_existing_method()" not found in base "MyClass".

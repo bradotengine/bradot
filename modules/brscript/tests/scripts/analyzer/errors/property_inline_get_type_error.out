@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Cannot return value of type "int" because the function return type is "String".

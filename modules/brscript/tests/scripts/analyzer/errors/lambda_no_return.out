@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Not all code paths return a value.

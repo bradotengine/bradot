@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Cannot find member "this_does_not_exist" in base "TileSet".

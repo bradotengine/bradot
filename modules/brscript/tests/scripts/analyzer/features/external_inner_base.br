@@ -1,0 +1,4 @@
+extends "inner_base.br".InnerA.InnerAB
+
+func test():
+	super.test()

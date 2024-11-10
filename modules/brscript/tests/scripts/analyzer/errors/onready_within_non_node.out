@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+"@onready" can only be used in classes that inherit "Node".

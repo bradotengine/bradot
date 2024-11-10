@@ -1,0 +1,2 @@
+func test():
+	print(print_debug()) # BRScript utility function.

@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/cast_int_to_array.br
+>> 4
+>> Invalid cast: could not convert value to 'Array'.

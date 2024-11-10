@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/typed_array_assign_differently_typed.br
+>> 3
+>> Trying to assign an array of type "Array[float]" to a variable of type "Array[int]".

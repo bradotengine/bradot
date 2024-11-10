@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/constant_dictionary_is_deep.br
+>> 6
+>> Invalid assignment on read-only value (on base: 'Array').

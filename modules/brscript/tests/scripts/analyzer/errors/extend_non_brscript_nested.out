@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Cannot get nested types for extension from non-BRScript type "RefCounted".

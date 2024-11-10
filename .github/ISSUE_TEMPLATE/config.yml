@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Bradot proposals
+    url: https://github.com/bradotengine/bradot-proposals
+    about: Please submit feature proposals on the Bradot proposals repository, not here.
+
+  - name: Bradot documentation repository
+    url: https://github.com/bradotengine/bradot-docs
+    about: Please report issues with documentation on the Bradot documentation repository, not here.
+
+  - name: Bradot community channels
+    url: https://bradotengine.org/community
+    about: Please ask for technical support on one of the other community channels, not here.

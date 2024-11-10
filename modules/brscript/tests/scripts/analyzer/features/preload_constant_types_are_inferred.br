@@ -1,0 +1,5 @@
+const Constants = preload("brscript_to_preload.notest.br")
+
+func test():
+	var a := Constants.A
+	print(a)

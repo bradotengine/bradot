@@ -1,0 +1,6 @@
+var test = 25
+
+# Error here. The difference with `variable-conflicts-function.br` is that here,
+# the function is defined *before* the variable.
+func test():
+	pass

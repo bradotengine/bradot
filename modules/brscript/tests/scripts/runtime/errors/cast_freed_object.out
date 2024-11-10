@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/cast_freed_object.br
+>> 4
+>> Trying to cast a freed object.

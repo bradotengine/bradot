@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/callable_call_after_free_object.br
+>> 6
+>> Attempt to call function 'null::is_inside_tree (Callable)' on a null instance.

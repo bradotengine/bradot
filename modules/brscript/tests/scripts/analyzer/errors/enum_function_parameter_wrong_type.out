@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Cannot pass a value of type "enum_function_parameter_wrong_type.br.MyOtherEnum" as "enum_function_parameter_wrong_type.br.MyEnum".

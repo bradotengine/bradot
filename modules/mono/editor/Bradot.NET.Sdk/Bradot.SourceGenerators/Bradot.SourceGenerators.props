@@ -1,0 +1,10 @@
+<Project>
+  <ItemGroup>
+    <!-- $(BradotProjectDir) is defined by Bradot.NET.Sdk -->
+    <CompilerVisibleProperty Include="BradotDisabledSourceGenerators" />
+    <CompilerVisibleProperty Include="BradotProjectDir" />
+    <CompilerVisibleProperty Include="BradotProjectDirBase64" />
+    <CompilerVisibleProperty Include="BradotSourceGenerators" />
+    <CompilerVisibleProperty Include="IsBradotToolsProject" />
+  </ItemGroup>
+</Project>

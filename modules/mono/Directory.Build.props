@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <BradotSdkPackageVersionsFilePath>$(MSBuildThisFileDirectory)\SdkPackageVersions.props</BradotSdkPackageVersionsFilePath>
+  </PropertyGroup>
+  <Import Project="$(BradotSdkPackageVersionsFilePath)" />
+</Project>

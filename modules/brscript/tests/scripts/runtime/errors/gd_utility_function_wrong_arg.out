@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/br_utility_function_wrong_arg.br
+>> 3
+>> Error calling BRScript utility function "len()": Value of type 'Color' can't provide a length.

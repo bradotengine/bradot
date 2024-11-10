@@ -1,0 +1,258 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+# Owners can be @users, @org/teams or emails.
+
+# Buildsystem (Before everything to be overwritten)
+
+*                                             @bradotengine/buildsystem
+
+# Core
+
+/core/                                        @bradotengine/core
+/core/crypto/                                 @bradotengine/network
+/core/debugger/                               @bradotengine/debugger
+/core/extension/                              @bradotengine/brextension
+/core/input/                                  @bradotengine/input
+
+# Doc
+
+/doc/                                         @bradotengine/documentation
+
+# Drivers
+
+/drivers/                                     @bradotengine/_systems
+
+## Audio
+/drivers/alsa/                                @bradotengine/audio
+/drivers/alsamidi/                            @bradotengine/audio
+/drivers/coreaudio/                           @bradotengine/audio
+/drivers/coremidi/                            @bradotengine/audio
+/drivers/pulseaudio/                          @bradotengine/audio
+/drivers/wasapi/                              @bradotengine/audio
+/drivers/winmidi/                             @bradotengine/audio
+/drivers/xaudio2/                             @bradotengine/audio
+
+## Rendering
+/drivers/d3d12/                               @bradotengine/rendering
+/drivers/dummy/                               @bradotengine/rendering
+/drivers/egl/                                 @bradotengine/rendering
+/drivers/gles3/                               @bradotengine/rendering
+/drivers/metal/                               @bradotengine/rendering
+/drivers/spirv-reflect/                       @bradotengine/rendering
+/drivers/vulkan/                              @bradotengine/rendering
+
+## OS
+/drivers/unix/                                @bradotengine/_platforms
+/drivers/windows/                             @bradotengine/windows
+
+## Misc
+/drivers/png/                                 @bradotengine/import
+
+# Editor
+
+/editor/                                      @bradotengine/_editor
+/editor/**/*2d*                               @bradotengine/2d-editor
+/editor/**/*3d*                               @bradotengine/3d-editor
+/editor/**/*code*                             @bradotengine/script-editor
+/editor/**/*debugger*                         @bradotengine/debugger
+/editor/**/*dock*                             @bradotengine/docks
+/editor/**/*script*                           @bradotengine/script-editor
+/editor/**/*shader*                           @bradotengine/shaders
+/editor/debugger/                             @bradotengine/debugger
+/editor/gui/                                  @bradotengine/usability @bradotengine/gui-nodes
+/editor/icons/                                @bradotengine/usability
+/editor/import/                               @bradotengine/import
+/editor/themes/                               @bradotengine/usability @bradotengine/gui-nodes
+
+# Main
+
+/main/                                        @bradotengine/core
+
+# Misc
+
+/misc/                                        @bradotengine/buildsystem
+/misc/extension_api_validation/               @bradotengine/brextension @bradotengine/dotnet
+
+# Modules
+
+/modules/                                     @bradotengine/_engine
+/modules/**/doc_classes/                      @bradotengine/_engine @bradotengine/documentation
+/modules/**/icons/                            @bradotengine/_engine @bradotengine/usability
+/modules/**/tests/                            @bradotengine/_engine @bradotengine/tests
+
+## Audio (+ video)
+/modules/interactive_music/                   @bradotengine/audio
+/modules/interactive_music/doc_classes/       @bradotengine/audio @bradotengine/documentation
+/modules/minimp3/                             @bradotengine/audio
+/modules/minimp3/doc_classes/                 @bradotengine/audio @bradotengine/documentation
+/modules/ogg/                                 @bradotengine/audio
+/modules/ogg/doc_classes/                     @bradotengine/audio @bradotengine/documentation
+/modules/theora/                              @bradotengine/audio
+/modules/theora/doc_classes/                  @bradotengine/audio @bradotengine/documentation
+/modules/vorbis/                              @bradotengine/audio
+/modules/vorbis/doc_classes/                  @bradotengine/audio @bradotengine/documentation
+
+## Import
+/modules/astcenc/                             @bradotengine/import
+/modules/basis_universal/                     @bradotengine/import
+/modules/betsy/                               @bradotengine/import
+/modules/bmp/                                 @bradotengine/import
+/modules/cvtt/                                @bradotengine/import
+/modules/dds/                                 @bradotengine/import
+/modules/etcpak/                              @bradotengine/import
+/modules/fbx/                                 @bradotengine/import
+/modules/fbx/doc_classes/                     @bradotengine/import @bradotengine/documentation
+/modules/gltf/                                @bradotengine/import
+/modules/gltf/doc_classes/                    @bradotengine/import @bradotengine/documentation
+/modules/gltf/tests/                          @bradotengine/import @bradotengine/tests
+/modules/hdr/                                 @bradotengine/import
+/modules/jpg/                                 @bradotengine/import
+/modules/ktx/                                 @bradotengine/import
+/modules/squish/                              @bradotengine/import
+/modules/svg/                                 @bradotengine/import
+/modules/tga/                                 @bradotengine/import
+/modules/tinyexr/                             @bradotengine/import
+/modules/webp/                                @bradotengine/import
+
+## Network
+/modules/enet/                                @bradotengine/network
+/modules/enet/doc_classes/                    @bradotengine/network @bradotengine/documentation
+/modules/mbedtls/                             @bradotengine/network
+/modules/mbedtls/tests/                       @bradotengine/network @bradotengine/tests
+/modules/multiplayer/                         @bradotengine/network
+/modules/multiplayer/doc_classes/             @bradotengine/network @bradotengine/documentation
+/modules/upnp/                                @bradotengine/network
+/modules/upnp/doc_classes/                    @bradotengine/network @bradotengine/documentation
+/modules/webrtc/                              @bradotengine/network
+/modules/webrtc/doc_classes/                  @bradotengine/network @bradotengine/documentation
+/modules/websocket/                           @bradotengine/network
+/modules/websocket/doc_classes/               @bradotengine/network @bradotengine/documentation
+
+## Physics
+/modules/bradot_physics_2d/                    @bradotengine/physics
+/modules/bradot_physics_3d/                    @bradotengine/physics
+
+## Rendering
+/modules/glslang/                             @bradotengine/rendering
+/modules/lightmapper_rd/                      @bradotengine/rendering
+/modules/meshoptimizer/                       @bradotengine/rendering
+/modules/raycast/                             @bradotengine/rendering
+/modules/vhacd/                               @bradotengine/rendering
+/modules/xatlas_unwrap/                       @bradotengine/rendering
+
+## Scripting
+/modules/brscript/                            @bradotengine/brscript
+/modules/brscript/doc_classes/                @bradotengine/brscript @bradotengine/documentation
+/modules/brscript/icons/                      @bradotengine/brscript @bradotengine/usability
+/modules/brscript/tests/                      @bradotengine/brscript @bradotengine/tests
+/modules/jsonrpc/                             @bradotengine/brscript @bradotengine/network
+/modules/jsonrpc/tests/                       @bradotengine/brscript @bradotengine/network @bradotengine/tests
+/modules/mono/                                @bradotengine/dotnet
+/modules/mono/doc_classes/                    @bradotengine/dotnet @bradotengine/documentation
+/modules/mono/icons/                          @bradotengine/dotnet @bradotengine/usability
+
+## Text
+/modules/freetype/                            @bradotengine/buildsystem
+/modules/msdfgen/                             @bradotengine/buildsystem
+/modules/text_server_adv/                     @bradotengine/gui-nodes
+/modules/text_server_adv/doc_classes/         @bradotengine/gui-nodes @bradotengine/documentation
+/modules/text_server_fb/                      @bradotengine/gui-nodes
+/modules/text_server_fb/doc_classes/          @bradotengine/gui-nodes @bradotengine/documentation
+
+## XR
+/modules/camera/                              @bradotengine/xr
+/modules/mobile_vr/                           @bradotengine/xr
+/modules/mobile_vr/doc_classes/               @bradotengine/xr @bradotengine/documentation
+/modules/openxr/                              @bradotengine/xr
+/modules/openxr/doc_classes/                  @bradotengine/xr @bradotengine/documentation
+/modules/webxr/                               @bradotengine/xr
+/modules/webxr/doc_classes/                   @bradotengine/xr @bradotengine/documentation
+
+## Misc
+/modules/csg/                                 @bradotengine/3d-nodes
+/modules/csg/doc_classes/                     @bradotengine/3d-nodes @bradotengine/documentation
+/modules/csg/icons/                           @bradotengine/3d-nodes @bradotengine/usability
+/modules/gridmap/                             @bradotengine/3d-nodes
+/modules/gridmap/doc_classes/                 @bradotengine/3d-nodes @bradotengine/documentation
+/modules/gridmap/icons/                       @bradotengine/3d-nodes @bradotengine/usability
+/modules/navigation/                          @bradotengine/navigation
+/modules/noise/                               @bradotengine/core
+/modules/noise/doc_classes/                   @bradotengine/core @bradotengine/documentation
+/modules/noise/icons/                         @bradotengine/core @bradotengine/usability
+/modules/noise/tests/                         @bradotengine/core @bradotengine/tests
+/modules/regex/                               @bradotengine/core
+/modules/regex/doc_classes/                   @bradotengine/core @bradotengine/documentation
+/modules/regex/icons/                         @bradotengine/core @bradotengine/usability
+/modules/regex/tests/                         @bradotengine/core @bradotengine/tests
+/modules/zip/                                 @bradotengine/core
+/modules/zip/doc_classes/                     @bradotengine/core @bradotengine/documentation
+
+# Platform
+
+/platform/                                    @bradotengine/_platforms
+/platform/android/                            @bradotengine/android
+/platform/android/doc_classes/                @bradotengine/android @bradotengine/documentation
+/platform/ios/                                @bradotengine/ios
+/platform/ios/doc_classes/                    @bradotengine/ios @bradotengine/documentation
+/platform/linuxbsd/                           @bradotengine/linux-bsd
+/platform/linuxbsd/doc_classes/               @bradotengine/linux-bsd @bradotengine/documentation
+/platform/macos/                              @bradotengine/macos
+/platform/macos/doc_classes/                  @bradotengine/macos @bradotengine/documentation
+/platform/web/                                @bradotengine/web
+/platform/web/doc_classes/                    @bradotengine/web @bradotengine/documentation
+/platform/windows/                            @bradotengine/windows
+/platform/windows/doc_classes/                @bradotengine/windows @bradotengine/documentation
+
+# Scene
+
+/scene/                                       @bradotengine/_systems @bradotengine/core
+/scene/2d/                                    @bradotengine/2d-nodes
+/scene/2d/physics/                            @bradotengine/2d-nodes @bradotengine/physics
+/scene/3d/                                    @bradotengine/3d-nodes
+/scene/3d/physics/                            @bradotengine/3d-nodes @bradotengine/physics
+/scene/animation/                             @bradotengine/animation
+/scene/audio/                                 @bradotengine/audio
+/scene/debugger/                              @bradotengine/debugger
+/scene/gui/                                   @bradotengine/gui-nodes
+/scene/main/                                  @bradotengine/core
+/scene/resources/font.*                       @bradotengine/gui-nodes
+/scene/resources/text_line.*                  @bradotengine/gui-nodes
+/scene/resources/text_paragraph.*             @bradotengine/gui-nodes
+/scene/resources/visual_shader*.*             @bradotengine/shaders
+/scene/theme/                                 @bradotengine/gui-nodes
+/scene/theme/icons/                           @bradotengine/gui-nodes @bradotengine/usability
+
+# Servers
+
+/servers/                                     @bradotengine/_systems
+/servers/**/audio_*                           @bradotengine/audio
+/servers/**/camera_*                          @bradotengine/xr
+/servers/**/debugger_*                        @bradotengine/debugger
+/servers/**/display_*                         @bradotengine/_platforms
+/servers/**/navigation_*                      @bradotengine/navigation
+/servers/**/physics_*                         @bradotengine/physics
+/servers/**/rendering_*                       @bradotengine/rendering
+/servers/**/text_*                            @bradotengine/gui-nodes
+/servers/**/xr_*                              @bradotengine/xr
+/servers/audio/                               @bradotengine/audio
+/servers/camera/                              @bradotengine/xr
+/servers/debugger/                            @bradotengine/debugger
+/servers/display/                             @bradotengine/_platforms
+/servers/navigation/                          @bradotengine/navigation
+/servers/rendering/                           @bradotengine/rendering
+/servers/text/                                @bradotengine/gui-nodes
+/servers/xr/                                  @bradotengine/xr
+
+# Tests
+
+/tests/                                       @bradotengine/tests
+
+# Thirdparty
+
+/thirdparty/                                  @bradotengine/buildsystem
+
+# Buildsystem (After everything to catch all)
+
+*.py                                          @bradotengine/buildsystem
+SConstruct                                    @bradotengine/buildsystem
+SCsub                                         @bradotengine/buildsystem

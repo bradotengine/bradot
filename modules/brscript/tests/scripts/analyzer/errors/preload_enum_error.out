@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Cannot assign a value of type "enum_from_outer.br.Named" as "preload_enum_error.br.LocalNamed".

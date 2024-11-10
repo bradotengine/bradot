@@ -1,0 +1,7 @@
+extends "./non_tool_extends_tool.notest.br"
+
+class InnerClass extends "./non_tool_extends_tool.notest.br":
+	pass
+
+func test():
+	pass

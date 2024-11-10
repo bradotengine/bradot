@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/typed_dictionary_assign_basic_to_typed.br
+>> 3
+>> Trying to assign a dictionary of type "Dictionary" to a variable of type "Dictionary[int, int]".

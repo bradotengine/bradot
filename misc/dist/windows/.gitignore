@@ -1,0 +1,2 @@
+# Ignore both the Bradot executable and generated installers.
+*.exe

@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Cannot assign a value of type "enum_unnamed_assign_to_named.br.<anonymous enum>" as "enum_unnamed_assign_to_named.br.MyEnum".

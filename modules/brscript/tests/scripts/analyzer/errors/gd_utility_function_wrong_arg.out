@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Invalid argument for "len()" function: Value of type 'Color' can't provide a length.

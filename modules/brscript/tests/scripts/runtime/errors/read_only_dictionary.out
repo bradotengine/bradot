@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/read_only_dictionary.br
+>> 4
+>> Invalid assignment on read-only value (on base: 'Dictionary').

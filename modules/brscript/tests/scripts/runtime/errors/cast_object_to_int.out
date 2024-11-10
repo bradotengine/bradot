@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> runtime/errors/cast_object_to_int.br
+>> 4
+>> Invalid cast: could not convert value to 'int'.

@@ -1,0 +1,39 @@
+<Project>
+  <!-- Generate C# file with the version of all the nupkgs bundled with Bradot -->
+
+  <Target Name="SetPropertiesForGenerateBradotNupkgsVersions">
+    <PropertyGroup>
+      <GeneratedBradotNupkgsVersionsFile>$(IntermediateOutputPath)BradotNupkgsVersions.g.cs</GeneratedBradotNupkgsVersionsFile>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="GenerateBradotNupkgsVersionsFile"
+          DependsOnTargets="_GenerateBradotNupkgsVersionsFile"
+          BeforeTargets="PrepareForBuild;CompileDesignTime;BeforeCompile;CoreCompile">
+    <ItemGroup>
+      <Compile Include="$(GeneratedBradotNupkgsVersionsFile)" />
+      <FileWrites Include="$(GeneratedBradotNupkgsVersionsFile)" />
+    </ItemGroup>
+  </Target>
+  <Target Name="_GenerateBradotNupkgsVersionsFile"
+          DependsOnTargets="SetPropertiesForGenerateBradotNupkgsVersions"
+          Inputs="$(MSBuildProjectFile);$(MSBuildThisFileDirectory);$(MSBuildProjectFile)\..\..\..\SdkPackageVersions.props"
+          Outputs="$(GeneratedBradotNupkgsVersionsFile)">
+    <PropertyGroup>
+      <GenerateBradotNupkgsVersionsCode><![CDATA[
+namespace $(RootNamespace)
+{
+    public class GeneratedBradotNupkgsVersions
+    {
+        public const string BradotNETSdk = "$(PackageVersion_Bradot_NET_Sdk)"%3b
+        public const string BradotSourceGenerators = "$(PackageVersion_Bradot_SourceGenerators)"%3b
+        public const string BradotSharp = "$(PackageVersion_BradotSharp)"%3b
+    }
+}
+]]></GenerateBradotNupkgsVersionsCode>
+    </PropertyGroup>
+    <WriteLinesToFile Lines="$(GenerateBradotNupkgsVersionsCode)"
+                      File="$(GeneratedBradotNupkgsVersionsFile)"
+                      Overwrite="True" WriteOnlyWhenDifferent="True" />
+  </Target>
+</Project>

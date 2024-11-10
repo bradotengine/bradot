@@ -1,0 +1,3 @@
+const B = preload("cyclic_ref_external.br")
+
+var v = B.v

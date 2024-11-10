@@ -1,0 +1,117 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)\SdkPackageVersions.props" />
+
+  <PropertyGroup>
+    <UsingBradotNETSdk>true</UsingBradotNETSdk>
+
+    <!-- Determines if we should import Microsoft.NET.Sdk, if it wasn't already imported. -->
+    <BradotSdkImportsMicrosoftNetSdk Condition=" '$(UsingMicrosoftNETSdk)' != 'true' ">true</BradotSdkImportsMicrosoftNetSdk>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Configurations>Debug;ExportDebug;ExportRelease</Configurations>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+
+    <BradotProjectDir Condition=" '$(BradotProjectDir)' == '' ">$(MSBuildProjectDirectory)</BradotProjectDir>
+    <BradotProjectDir>$([MSBuild]::EnsureTrailingSlash('$(BradotProjectDir)'))</BradotProjectDir>
+    <BradotProjectDirBase64 Condition=" $([MSBuild]::VersionGreaterThanOrEquals($(MSBuildAssemblyVersion), '17.3')) ">$([MSBuild]::ConvertToBase64('$(BradotProjectDir)'))</BradotProjectDirBase64>
+
+    <!-- Custom output paths for Bradot projects. In brief, 'bin\' and 'obj\' are moved to '$(BradotProjectDir)\.bradot\mono\temp\'. -->
+    <BaseOutputPath>$(BradotProjectDir).bradot\mono\temp\bin\</BaseOutputPath>
+    <OutputPath>$(BradotProjectDir).bradot\mono\temp\bin\$(Configuration)\</OutputPath>
+    <!--
+    Use custom IntermediateOutputPath and BaseIntermediateOutputPath only if it wasn't already set.
+    Otherwise the old values may have already been changed by MSBuild which can cause problems with NuGet.
+    -->
+    <IntermediateOutputPath Condition=" '$(IntermediateOutputPath)' == '' ">$(BradotProjectDir).bradot\mono\temp\obj\$(Configuration)\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath Condition=" '$(BaseIntermediateOutputPath)' == '' ">$(BradotProjectDir).bradot\mono\temp\obj\</BaseIntermediateOutputPath>
+
+    <!-- Do not append the target framework name to the output path. -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <Target Condition=" $([MSBuild]::VersionLessThan($(MSBuildAssemblyVersion), '17.3')) " Name="BradotProjectDir" BeforeTargets="Build">
+    <Error Text="Cannot build from path containing '%23', move your project or update dotnet to the latest version." Condition="$(BradotProjectDir.Contains('%23'))" /> <!-- # -->
+    <Error Text="Cannot build from path containing '%3B', move your project or update dotnet to the latest version." Condition="$(BradotProjectDir.Contains('%3B'))" /> <!-- ; -->
+    <Error Text="Cannot build from path containing newlines, move your project or update dotnet to the latest version." Condition="$(BradotProjectDir.Contains('%0A'))" /> <!-- \n -->
+    <Error Text="Cannot build from path containing newlines, move your project or update dotnet to the latest version." Condition="$(BradotProjectDir.Contains('%0D'))" /> <!-- \r -->
+  </Target>
+
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.props" Condition=" '$(BradotSdkImportsMicrosoftNetSdk)' == 'true' " />
+
+  <PropertyGroup>
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+  </PropertyGroup>
+
+  <!--
+  The Microsoft.NET.Sdk only understands of the Debug and Release configurations.
+  We need to set the following properties manually for ExportDebug and ExportRelease.
+  -->
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' or '$(Configuration)' == 'ExportDebug' ">
+    <DebugSymbols Condition=" '$(DebugSymbols)' == '' ">true</DebugSymbols>
+    <Optimize Condition=" '$(Optimize)' == '' ">false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'ExportRelease' ">
+    <Optimize Condition=" '$(Optimize)' == '' ">true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BradotApiConfiguration Condition=" '$(Configuration)' != 'ExportRelease' ">Debug</BradotApiConfiguration>
+    <BradotApiConfiguration Condition=" '$(Configuration)' == 'ExportRelease' ">Release</BradotApiConfiguration>
+  </PropertyGroup>
+
+  <!-- Auto-detect the target Bradot platform if it was not specified. -->
+  <PropertyGroup Condition=" '$(BradotTargetPlatform)' == '' ">
+    <BradotTargetPlatform Condition=" $(RuntimeIdentifier.StartsWith('ios')) ">ios</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$(BradotTargetPlatform)' == '' and $(RuntimeIdentifier.StartsWith('android')) ">android</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$(BradotTargetPlatform)' == '' and $(RuntimeIdentifier.StartsWith('browser')) ">web</BradotTargetPlatform>
+
+    <BradotTargetPlatform Condition=" '$(BradotTargetPlatform)' == '' and $(RuntimeIdentifier.StartsWith('linux')) ">linuxbsd</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$(BradotTargetPlatform)' == '' and $(RuntimeIdentifier.StartsWith('freebsd')) ">linuxbsd</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$(BradotTargetPlatform)' == '' and $(RuntimeIdentifier.StartsWith('osx')) ">macos</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$(BradotTargetPlatform)' == '' and $(RuntimeIdentifier.StartsWith('win')) ">windows</BradotTargetPlatform>
+  </PropertyGroup>
+
+  <!-- Auto-detect the target Bradot platform if it was not specified and there's no runtime identifier information. -->
+  <PropertyGroup Condition=" '$(BradotTargetPlatform)' == '' ">
+    <BradotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(Linux))' ">linuxbsd</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(FreeBSD))' ">linuxbsd</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(OSX))' ">macos</BradotTargetPlatform>
+    <BradotTargetPlatform Condition=" '$([MSBuild]::IsOsPlatform(Windows))' ">windows</BradotTargetPlatform>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BradotFloat64 Condition=" '$(BradotFloat64)' == '' ">false</BradotFloat64>
+  </PropertyGroup>
+
+  <!-- Bradot DefineConstants. -->
+  <PropertyGroup>
+    <!-- Define constants to identify Bradot builds. -->
+    <BradotDefineConstants>BRADOT</BradotDefineConstants>
+
+    <!--
+    Define constant to determine the target Bradot platform. This includes the
+    recognized platform names and the platform category (PC, MOBILE or WEB).
+    -->
+    <BradotPlatformConstants Condition=" '$(BradotTargetPlatform)' == 'windows' ">BRADOT_WINDOWS;BRADOT_PC</BradotPlatformConstants>
+    <BradotPlatformConstants Condition=" '$(BradotTargetPlatform)' == 'linuxbsd' ">BRADOT_LINUXBSD;BRADOT_PC</BradotPlatformConstants>
+    <BradotPlatformConstants Condition=" '$(BradotTargetPlatform)' == 'macos' ">BRADOT_OSX;BRADOT_MACOS;BRADOT_PC</BradotPlatformConstants>
+    <BradotPlatformConstants Condition=" '$(BradotTargetPlatform)' == 'android' ">BRADOT_ANDROID;BRADOT_MOBILE</BradotPlatformConstants>
+    <BradotPlatformConstants Condition=" '$(BradotTargetPlatform)' == 'ios' ">BRADOT_IPHONE;BRADOT_IOS;BRADOT_MOBILE</BradotPlatformConstants>
+    <BradotPlatformConstants Condition=" '$(BradotTargetPlatform)' == 'web' ">BRADOT_JAVASCRIPT;BRADOT_HTML5;BRADOT_WASM;BRADOT_WEB</BradotPlatformConstants>
+
+    <BradotDefineConstants>$(BradotDefineConstants);$(BradotPlatformConstants);$(BradotVersionConstants)</BradotDefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- ExportDebug also defines DEBUG like Debug does. -->
+    <DefineConstants Condition=" '$(Configuration)' == 'ExportDebug' ">$(DefineConstants);DEBUG</DefineConstants>
+    <!-- Debug defines TOOLS to differentiate between Debug and ExportDebug configurations. -->
+    <DefineConstants Condition=" '$(Configuration)' == 'Debug' ">$(DefineConstants);TOOLS</DefineConstants>
+
+    <DefineConstants>$(BradotDefineConstants);$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)\Android.props" Condition=" '$(BradotTargetPlatform)' == 'android' " />
+  <Import Project="$(MSBuildThisFileDirectory)\iOSNativeAOT.props" Condition=" '$(BradotTargetPlatform)' == 'ios' " />
+</Project>

@@ -1,0 +1,6 @@
+BRTEST_RUNTIME_ERROR
+>> SCRIPT ERROR
+>> on function: test()
+>> analyzer/errors/native_freed_instance.br
+>> 7
+>> Trying to assign invalid previously freed instance.

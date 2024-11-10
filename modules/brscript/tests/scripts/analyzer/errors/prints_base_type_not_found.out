@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Could not find type "DoesNotExist" under base "InnerClass".

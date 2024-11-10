@@ -1,0 +1,5 @@
+extends "external_parser_script1f.notest.br"
+
+const External1e = preload("external_parser_script1e.notest.br")
+
+var bar: Array[External1e]

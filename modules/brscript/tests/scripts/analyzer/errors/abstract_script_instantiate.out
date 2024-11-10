@@ -1,0 +1,2 @@
+BRTEST_ANALYZER_ERROR
+Class "abstract_script_instantiate.br::B" cannot be constructed as it is based on abstract native class "InstancePlaceholder".

@@ -1,0 +1,27 @@
+<Project>
+  <Import Sdk="Microsoft.NET.Sdk" Project="Sdk.targets" Condition=" '$(BradotSdkImportsMicrosoftNetSdk)' == 'true' " />
+
+  <PropertyGroup>
+    <!--
+    Define constant to determine whether the real_t type in Bradot is double precision or not.
+    By default this is false, like the official Bradot builds. If someone is using a custom
+    Bradot build where real_t is double, they can override the BradotFloat64 property.
+    -->
+    <DefineConstants Condition=" '$(BradotFloat64)' == 'true' ">BRADOT_REAL_T_IS_DOUBLE;$(DefineConstants)</DefineConstants>
+  </PropertyGroup>
+
+  <!-- C# source generators -->
+  <ItemGroup Condition=" '$(DisableImplicitBradotGeneratorReferences)' != 'true' ">
+    <PackageReference Include="Bradot.SourceGenerators" Version="$(PackageVersion_Bradot_SourceGenerators)" />
+  </ItemGroup>
+
+  <!-- Bradot API references -->
+  <ItemGroup Condition=" '$(DisableImplicitBradotSharpReferences)' != 'true' ">
+    <PackageReference Include="BradotSharp" Version="$(PackageVersion_BradotSharp)" />
+    <PackageReference Include="BradotSharpEditor" Version="$(PackageVersion_BradotSharp)" Condition=" '$(Configuration)' == 'Debug' " />
+  </ItemGroup>
+
+  <!-- iOS-specific build targets -->
+  <Import Project="$(MSBuildThisFileDirectory)\iOSNativeAOT.targets" Condition=" '$(BradotTargetPlatform)' == 'ios' " />
+
+</Project>

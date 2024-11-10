@@ -1,0 +1,18 @@
+BRTEST_OK
+var test_native: BRScriptNativeClass
+var test_script: BRScript
+var test_class: BRScript
+var test_enum: Dictionary
+---
+BRScriptNativeClass
+BRScript
+BRScript
+{ "A": 0, "B": 1, "C": 2 }
+---
+[]
+100
+10
+["A", "B", "C"]
+---
+100
+10
