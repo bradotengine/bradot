@@ -7,11 +7,11 @@ index c98f61fa53..7f7a009a1e 100644
  #if defined(__EMSCRIPTEN__)
  #include <emscripten.h>
 +
-+// -- GODOT start --
++// -- BRADOT start --
 +extern "C" {
 +extern int bradot_js_os_hw_concurrency_get();
 +}
-+// -- GODOT end --
++// -- BRADOT end --
  #endif
  
  namespace embree
@@ -34,9 +34,9 @@ index c98f61fa53..7f7a009a1e 100644
 -            return 1;
 -        }
 -    });
-+    // -- GODOT start --
++    // -- BRADOT start --
 +    nThreads = bradot_js_os_hw_concurrency_get();
-+    // -- GODOT end --
++    // -- BRADOT end --
  #else
      cpu_set_t set;
      if (pthread_getaffinity_np(pthread_self(), sizeof(set), &set) == 0)

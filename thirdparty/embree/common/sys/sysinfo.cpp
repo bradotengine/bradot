@@ -647,11 +647,11 @@ namespace embree
 #if defined(__EMSCRIPTEN__)
 #include <emscripten.h>
 
-// -- GODOT start --
+// -- BRADOT start --
 extern "C" {
 extern int bradot_js_os_hw_concurrency_get();
 }
-// -- GODOT end --
+// -- BRADOT end --
 #endif
 
 namespace embree
@@ -665,9 +665,9 @@ namespace embree
     nThreads = sysconf(_SC_NPROCESSORS_ONLN); // does not work in Linux LXC container
     assert(nThreads);
 #elif defined(__EMSCRIPTEN__)
-    // -- GODOT start --
+    // -- BRADOT start --
     nThreads = bradot_js_os_hw_concurrency_get();
-    // -- GODOT end --
+    // -- BRADOT end --
 #else
     cpu_set_t set;
     if (pthread_getaffinity_np(pthread_self(), sizeof(set), &set) == 0)
