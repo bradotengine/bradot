@@ -432,7 +432,7 @@ String BRScriptLanguage::debug_parse_stack_level_expression(int p_level, const S
 }
 
 void BRScriptLanguage::get_recognized_extensions(List<String> *p_extensions) const {
-	p_extensions->push_back("gd");
+	p_extensions->push_back("br");
 }
 
 void BRScriptLanguage::get_public_functions(List<MethodInfo> *p_functions) const {
@@ -1035,7 +1035,7 @@ static void _list_available_types(bool p_inherit_only, BRScriptParser::Completio
 
 	for (const KeyValue<StringName, ProjectSettings::AutoloadInfo> &E : autoloads) {
 		const ProjectSettings::AutoloadInfo &info = E.value;
-		if (!info.is_singleton || info.path.get_extension().to_lower() != "gd") {
+		if (!info.is_singleton || info.path.get_extension().to_lower() != "br") {
 			continue;
 		}
 		ScriptLanguage::CodeCompletionOption option(info.name, ScriptLanguage::CODE_COMPLETION_KIND_CLASS, ScriptLanguage::LOCATION_OTHER_USER_CODE);

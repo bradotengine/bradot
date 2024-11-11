@@ -1509,7 +1509,7 @@ String BRScript::debug_get_script_name(const Ref<Script> &p_script) {
 #endif
 
 String BRScript::canonicalize_path(const String &p_path) {
-	if (p_path.get_extension() == "gdc") {
+	if (p_path.get_extension() == "brc") {
 		return p_path.get_basename() + ".br";
 	}
 	return p_path;
@@ -2334,7 +2334,7 @@ String BRScriptLanguage::get_type() const {
 }
 
 String BRScriptLanguage::get_extension() const {
-	return "gd";
+	return "br";
 }
 
 void BRScriptLanguage::finish() {
@@ -3048,8 +3048,8 @@ Ref<Resource> ResourceFormatLoaderBRScript::load(const String &p_path, const Str
 }
 
 void ResourceFormatLoaderBRScript::get_recognized_extensions(List<String> *p_extensions) const {
-	p_extensions->push_back("gd");
-	p_extensions->push_back("gdc");
+	p_extensions->push_back("br");
+	p_extensions->push_back("brc");
 }
 
 bool ResourceFormatLoaderBRScript::handles_type(const String &p_type) const {
@@ -3058,7 +3058,7 @@ bool ResourceFormatLoaderBRScript::handles_type(const String &p_type) const {
 
 String ResourceFormatLoaderBRScript::get_resource_type(const String &p_path) const {
 	String el = p_path.get_extension().to_lower();
-	if (el == "gd" || el == "gdc") {
+	if (el == "br" || el == "brc") {
 		return "BRScript";
 	}
 	return "";
@@ -3110,7 +3110,7 @@ Error ResourceFormatSaverBRScript::save(const Ref<Resource> &p_resource, const S
 
 void ResourceFormatSaverBRScript::get_recognized_extensions(const Ref<Resource> &p_resource, List<String> *p_extensions) const {
 	if (Object::cast_to<BRScript>(*p_resource)) {
-		p_extensions->push_back("gd");
+		p_extensions->push_back("br");
 	}
 }
 

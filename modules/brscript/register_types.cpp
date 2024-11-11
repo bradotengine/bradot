@@ -97,7 +97,7 @@ protected:
 	}
 
 	virtual void _export_file(const String &p_path, const String &p_type, const HashSet<String> &p_features) override {
-		if (p_path.get_extension() != "gd" || script_mode == EditorExportPreset::MODE_SCRIPT_TEXT) {
+		if (p_path.get_extension() != "br" || script_mode == EditorExportPreset::MODE_SCRIPT_TEXT) {
 			return;
 		}
 

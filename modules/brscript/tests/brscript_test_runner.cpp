@@ -282,7 +282,7 @@ bool BRScriptTestRunner::make_tests_for_dir(const String &p_dir) {
 			} else if (binary_tokens && next.ends_with(".textonly.br")) {
 				next = dir->get_next();
 				continue;
-			} else if (next.get_extension().to_lower() == "gd") {
+			} else if (next.get_extension().to_lower() == "br") {
 #ifndef DEBUG_ENABLED
 				// On release builds, skip tests marked as debug only.
 				Error open_err = OK;

@@ -77,7 +77,7 @@ Error BRScriptParserRef::raise_status(Status p_new_status) {
 				get_parser()->clear();
 				status = PARSED;
 				String remapped_path = ResourceLoader::path_remap(path);
-				if (remapped_path.get_extension().to_lower() == "gdc") {
+				if (remapped_path.get_extension().to_lower() == "brc") {
 					Vector<uint8_t> tokens = BRScriptCache::get_binary_tokens(remapped_path);
 					source_hash = hash_djb2_buffer(tokens.ptr(), tokens.size());
 					result = get_parser()->parse_binary(tokens, path);
@@ -314,7 +314,7 @@ Ref<BRScript> BRScriptCache::get_shallow_script(const String &p_path, Error &r_e
 	Ref<BRScript> script;
 	script.instantiate();
 	script->set_path_cache(p_path);
-	if (remapped_path.get_extension().to_lower() == "gdc") {
+	if (remapped_path.get_extension().to_lower() == "brc") {
 		Vector<uint8_t> buffer = get_binary_tokens(remapped_path);
 		if (buffer.is_empty()) {
 			r_error = ERR_FILE_CANT_READ;
@@ -366,7 +366,7 @@ Ref<BRScript> BRScriptCache::get_full_script(const String &p_path, Error &r_erro
 	const String remapped_path = ResourceLoader::path_remap(p_path);
 
 	if (p_update_from_disk) {
-		if (remapped_path.get_extension().to_lower() == "gdc") {
+		if (remapped_path.get_extension().to_lower() == "brc") {
 			Vector<uint8_t> buffer = get_binary_tokens(remapped_path);
 			if (buffer.is_empty()) {
 				r_error = ERR_FILE_CANT_READ;

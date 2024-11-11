@@ -3333,7 +3333,7 @@ Error Main::setup2(bool p_show_boot_logo) {
 	}
 
 	PackedStringArray extensions;
-	extensions.push_back("gd");
+	extensions.push_back("br");
 	if (ClassDB::class_exists("CSharpScript")) {
 		extensions.push_back("cs");
 	}
@@ -4005,7 +4005,7 @@ int Main::start() {
 			DocTools docs;
 			Error err;
 
-			Vector<String> paths = get_files_with_extension(brscript_docs_path, "gd");
+			Vector<String> paths = get_files_with_extension(brscript_docs_path, "br");
 			ERR_FAIL_COND_V_MSG(paths.is_empty(), EXIT_FAILURE, "Couldn't find any BRScript files under the given directory: " + brscript_docs_path);
 
 			for (const String &path : paths) {
